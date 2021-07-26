@@ -20,6 +20,7 @@ class ProfileScreen extends StatelessWidget {
         listener: (context,state){
           if (state is ProfileStatesSuccess ){
             print('secesssss zozzzzzzzzzzz');
+
           }
         },
         builder: (context,state){
@@ -27,155 +28,40 @@ class ProfileScreen extends StatelessWidget {
           return Scaffold(
             body: ListView(
               children: [
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                   SizedBox(
                     height: 25,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(60.0)),
-                      border: Border.all(
-                        color: defaultColor,
-                        width: 4.0,
-                      ),
-                    ),
-                    child: ClipOval(
-                      child: Image.asset(
-                        'assets/images/ziead.jpg',
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+
+                  buildPhotoAvatar(profile),
                   SizedBox(
                     height: 15,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                       'Current Name',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      InkWell(
-                        child: Icon(
-                          OMIcons.borderColor,
-                          color: defaultColor,
-                          size: 15,
-                        ),
-                        onTap: () {
-                        //  navigateTo(context, EditProfileScreen());
-                          print(profile.toString());
-                        },
-                      ),
-                    ],
-                  ),
+
+
+                  buildRowOfFullName(profile),
                   SizedBox(
                     height: 15,
                   ),
-                  Text('Current Account@gmail.com'),
+
+                  Text('${profile['email']}'),
 
                   SizedBox(
                     height: 40,
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                    ),
-                    child: Row(
-                      children: [
-                        buildProfileItem(
-                          function: () {navigateTo(context, MyCoursesScreen());},
-                          title: 'My Courses',
-                          shape: Text(
-                            '5',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20.0,
-                        ),
-                        buildProfileItem(
-                          function: () {navigateTo(context, MyFavouritesScreen());},
-                          title: 'My Favourites',
-                          shape: Icon(
-                            Icons.favorite_border,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  buildFirstRowProfileItems(context),
 
                   SizedBox(
                     height: 20.0,
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                    ),
-                    child: Row(
-                      children: [
-                        buildProfileItem(
-                          function: () {navigateTo(context, MyCartScreen());},
-                          title: 'My Cart',
-                          shape: Icon(
-                            Icons.shopping_cart_outlined,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20.0,
-                        ),
-                        buildProfileItem(
-                          function: () {navigateTo(context, MyReviewsScreen());},
-                          title: 'My Reviews',
-                          shape: Icon(
-                            Icons.star_half,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  buildSecondRowProfileItems(context),
 
                   SizedBox(
                     height: 20.0,
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                    ),
-                    child: Row(
-                      children: [
-                        buildProfileItem(
-                          function: () {navigateTo(context, InviteFriendScreen());},
-                          title: 'Invite a friend',
-                          shape: Icon(
-                            Icons.share,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20.0,
-                        ),
-                        buildProfileItem(
-                          function: () {},
-                          title: 'Help & Support',
-                          shape: Icon(
-                            Icons.help_outline,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  buildThirdRowProfileItems(context),
 
                   SizedBox(
                     height: 20.0,
@@ -189,5 +75,131 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+  Widget buildPhotoAvatar(profile)=> Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.all(Radius.circular(60.0)),
+      border: Border.all(
+        color: defaultColor,
+        width: 4.0,
+      ),
+    ),
+    child: ClipOval(
+      child: Image.network(
+        '${profile['image']}',
+        width: 100,
+        height: 100,
+        fit: BoxFit.cover,
+      ),
+    ),
+  );
+  Widget buildRowOfFullName(profile)=>  Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        '${profile['full_name']}',
+        style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      SizedBox(
+        width: 10,
+      ),
+      InkWell(
+        child: Icon(
+          OMIcons.borderColor,
+          color: defaultColor,
+          size: 15,
+        ),
+        onTap: () {
+          //  navigateTo(context, EditProfileScreen());
+          print(profile.toString());
+        },
+      ),
+    ],
+  );
+  Widget buildFirstRowProfileItems(context)=> Padding(
+    padding: EdgeInsets.symmetric(
+      horizontal: 20.0,
+    ),
+    child: Row(
+      children: [
+        buildProfileItem(
+          function: () {navigateTo(context, MyCoursesScreen());},
+          title: 'My Courses',
+          shape: Text(
+            '5',
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 20.0,
+        ),
+        buildProfileItem(
+          function: () {navigateTo(context, MyFavouritesScreen());},
+          title: 'My Favourites',
+          shape: Icon(
+            Icons.favorite_border,
+          ),
+        ),
+      ],
+    ),
+  );
+  Widget buildSecondRowProfileItems(context)=> Padding(
+    padding: EdgeInsets.symmetric(
+      horizontal: 20.0,
+    ),
+    child: Row(
+      children: [
+        buildProfileItem(
+          function: () {navigateTo(context, MyCartScreen());},
+          title: 'My Cart',
+          shape: Icon(
+            Icons.shopping_cart_outlined,
+          ),
+        ),
+        SizedBox(
+          width: 20.0,
+        ),
+        buildProfileItem(
+          function: () {navigateTo(context, MyReviewsScreen());},
+          title: 'My Reviews',
+          shape: Icon(
+            Icons.star_half,
+          ),
+        ),
+      ],
+    ),
+  );
+  Widget buildThirdRowProfileItems(context)=> Padding(
+    padding: EdgeInsets.symmetric(
+      horizontal: 20.0,
+    ),
+    child: Row(
+      children: [
+        buildProfileItem(
+          function: () {navigateTo(context, InviteFriendScreen());},
+          title: 'Invite a friend',
+          shape: Icon(
+            Icons.share,
+          ),
+        ),
+        SizedBox(
+          width: 20.0,
+        ),
+        buildProfileItem(
+          function: () {},
+          title: 'Help & Support',
+          shape: Icon(
+            Icons.help_outline,
+          ),
+        ),
+      ],
+    ),
+  );
 }
 

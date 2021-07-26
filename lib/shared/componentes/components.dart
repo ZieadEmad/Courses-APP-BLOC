@@ -46,21 +46,13 @@ List<CategoryModel> cat = [
   ),
 ];
 
-SharedPreferences preferences;
+
 
 void initApp() {
   DioHelper();
 }
 
-Future<void> initpref() async {
-  preferences = await SharedPreferences.getInstance();
-}
 
-Future<bool> saveToken(String token) => preferences.setString('token', token);
-
-Future<bool> removeToken() => preferences.remove('token');
-
-String getToken() => preferences.getString('token');
 
 Widget defaultButton({
   Color background = Colors.indigo,
@@ -69,8 +61,7 @@ Widget defaultButton({
   @required Function function,
   @required String text,
   bool toUpper = true,
-}) =>
-    Container(
+}) => Container(
       width: width,
       height: 40.0,
       decoration: BoxDecoration(
@@ -129,8 +120,7 @@ Widget defualtTextBox({
   bool isPassword = false,
   @required TextEditingController controller,
   @required TextInputType type,
-}) =>
-    Container(
+}) => Container(
       padding: EdgeInsetsDirectional.only(
         start: 15,
         end: 10,
@@ -247,8 +237,7 @@ Widget buildOneCardSettings({
   );
 }
 
-Widget buildOneRowCardSettings(
-    {@required text, @required Function function, @required String heroTag}) {
+Widget buildOneRowCardSettings({@required text, @required Function function, @required String heroTag}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -341,7 +330,7 @@ Widget buildOneBox({
 }
 
 
-//Abddalaa
+
 Widget buildSearchCategoryItem(CategoryModel model, context) => GestureDetector(
   onTap: () {
   },
@@ -406,8 +395,9 @@ Widget buildCourseItems(course) {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
+
                 color:defaultColor,
-                image: DecorationImage(image: NetworkImage(course['image'])),
+                image: DecorationImage(image: NetworkImage(course['image']),),
               ),
               width: 60,
               height: 60,

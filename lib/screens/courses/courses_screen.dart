@@ -32,7 +32,7 @@ class CoursesScreen extends StatelessWidget {
                     //     physics: BouncingScrollPhysics(),
                     //     scrollDirection: Axis.horizontal,
                     //     itemBuilder: (context, index) =>
-                    //         buildSearchCategoryItem(cat[index], context),
+                       //      buildSearchCategoryItem(cat[index], context),
                     //     separatorBuilder: (context, index) => SizedBox(
                     //       width: 10.0,
                     //     ),

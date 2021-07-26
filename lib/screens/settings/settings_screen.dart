@@ -6,6 +6,7 @@ import 'package:course_app/screens/settings/push_notifications/push_notification
 import 'package:course_app/screens/settings/questions/questions_screen.dart';
 import 'package:course_app/screens/welcome/welcome_screen.dart';
 import 'package:course_app/shared/componentes/components.dart';
+import 'package:course_app/shared/network/local/shared_prefrence.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatelessWidget {

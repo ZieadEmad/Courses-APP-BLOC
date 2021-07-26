@@ -102,16 +102,6 @@ class _PhoneScreenState extends State<PhoneScreen> {
         isCode = true;
         verCode = verificationId ;
         setState(() {});
-        // if (code == VerifcationId)
-        // {
-        //   navigateAndFinish(ctx, HomeScreen());
-        // }
-        // else
-        // {
-        //   showToast(
-        //       text: 'please enter a valid Code', error: true);
-        //   return;
-        // }
       } ,
       codeAutoRetrievalTimeout: (String verificationId)
       {

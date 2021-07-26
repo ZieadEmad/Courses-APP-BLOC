@@ -5,6 +5,7 @@ import 'package:course_app/screens/sign_up/cubit/cubit.dart';
 import 'package:course_app/screens/welcome/welcome_screen.dart';
 import 'package:course_app/shared/colors/colors_common.dart';
 import 'package:course_app/shared/componentes/components.dart';
+import 'package:course_app/shared/network/local/shared_prefrence.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

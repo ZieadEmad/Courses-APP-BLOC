@@ -30,8 +30,8 @@ class SignUpScreen extends StatelessWidget {
           return navigateAndFinish(
             context,
             LoginScreen(
-              Email: emailController.text,
-              Pass: passController.text,
+              email: emailController.text,
+              pass: passController.text,
             ),
           );
         }

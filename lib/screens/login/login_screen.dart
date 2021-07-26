@@ -4,15 +4,17 @@ import 'package:course_app/screens/login/cubit/cubit.dart';
 import 'package:course_app/screens/login/cubit/states.dart';
 import 'package:course_app/screens/sign_up/signup_screen.dart';
 import 'package:course_app/shared/componentes/components.dart';
+import 'package:course_app/shared/network/local/shared_prefrence.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
-  String Email ;
-  String Pass ;
 
-  LoginScreen({this.Email, this.Pass});
+  String email ;
+  String pass ;
+
+  LoginScreen({this.email, this.pass});
 
   var emailController = TextEditingController();
   var passController = TextEditingController();
@@ -20,9 +22,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    if ( Email != null && Pass != null){
-      emailController.text = Email ;
-      passController.text = Pass;
+    if ( email != null && pass != null){
+      emailController.text = email ;
+      passController.text = pass;
     }
 
     return BlocProvider(
